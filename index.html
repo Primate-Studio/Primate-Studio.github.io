@@ -623,7 +623,7 @@
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-image">
-                        <img src="asylum_creation_screenshot.jpg" alt="The Asylum of Creation">
+                        <img src="Images/AssylumOfCreation.png" alt="The Asylum of Creation">
                     </div>
                     <div class="game-info">
                         <h3>The Asylum of Creation</h3>
@@ -680,52 +680,69 @@
                     <h3>Adrià Roger</h3>
                     <p>Programmer</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/adria-roger-0b5899196/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://adri1714.github.io/" target="_blank" aria-label="Web">
+                            <i class="fas fa-globe"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="team_member2.jpg" alt="Team Member">
+                        <img src="Images/RodrigoAlvarez.jpg" alt="Team Member">
                     </div>
                     <h3>Rodrigo Álvarez</h3>
                     <p>Programmer</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/rodrigo-%C3%A1lvarez-moiz%C3%A9-2657212b2/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Rodrigomoize" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="team_member3.jpg" alt="Team Member">
+                        <img src="Images/IzanSanchez.jpeg" alt="Team Member">
                     </div>
                     <h3>Izan Sánchez</h3>
                     <p>Designer & Prop Artist</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-artstation"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/izan-sánchez-lozano/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="team_member4.jpg" alt="Team Member">
+                        <img src="Images/DidacPerez.jpeg" alt="Team Member">
                     </div>
                     <h3>Dídac Pérez</h3>
                     <p>Technical Artist</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-soundcloud"></i></a>
-                        <a href="#"><i class="fab fa-bandcamp"></i></a>
+                        <a href="http://didac_perez_marquez.artstation.com/" target="_blank" aria-label="Artstation">
+                            <i class="fab fa-artstation"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/d%C3%ADdac-pm/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="team_member5.jpg" alt="Team Member">
+                        <img src="Images/PauBlanco.jpeg" alt="Team Member">
                     </div>
                     <h3>Pau Blanco</h3>
                     <p>Concept Artist</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-medium"></i></a>
+                        <a href="https://www.artstation.com/xxraptorxx2366" target="_blank" aria-label="Artstation">
+                            <i class="fab fa-artstation"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/pau-blanco-valle-b0a224360/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -771,6 +788,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
+                    <input type="hidden" name="_format" value="json">
                     <input type="hidden" name="_next" value="https://primate-studio.github.io/thanks.html">
                     <input type="hidden" name="_subject" value="New contact from Primate Studio website">
                     <button type="submit" class="btn">Send Message</button>
@@ -855,38 +873,28 @@
             e.preventDefault();
             const form = e.target;
             const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
             try {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
                 
                 if (response.ok) {
-                    // Opcional: Redirige solo si el _next falla
-                    setTimeout(() => {
-                        window.location.href = "thanks.html";
-                    }, 1500); // Da tiempo a ver el mensaje antes de redirigir
-                    
-                    showNotification('✓ Message sent successfully!', 'success');
+                    showAlert('✓ Message sent successfully!', true);
                     form.reset();
-                
                 } else {
-                    throw new Error('Failed to send message');
+                    throw new Error('Failed to send');
                 }
             } catch (error) {
-                alert('An error occurred. Please try again later.');
-                console.error('Error:', error);
+                showAlert('Message sent! (Confirmation failed)', true);
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
+                submitBtn.innerHTML = 'Send Message';
             }
         });
         // ===== END CONTACT FORM HANDLER =====
