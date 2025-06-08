@@ -870,9 +870,14 @@
                 });
                 
                 if (response.ok) {
-                    alert('Message sent successfully!');
+                    // Opcional: Redirige solo si el _next falla
+                    setTimeout(() => {
+                        window.location.href = "thanks.html";
+                    }, 1500); // Da tiempo a ver el mensaje antes de redirigir
                     
+                    showNotification('✓ Message sent successfully!', 'success');
                     form.reset();
+                
                 } else {
                     throw new Error('Failed to send message');
                 }
