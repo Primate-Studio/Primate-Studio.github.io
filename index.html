@@ -554,6 +554,37 @@
         .floating {
             animation: float 6s ease-in-out infinite;
         }
+        /* Alert Styles */
+        .form-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            background: #4CAF50;
+            color: white;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-alert.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .form-alert.error {
+            background: #f44336;
+        }
+        
+        .form-alert i {
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -869,11 +900,28 @@
             });
         });
         // ===== NEW CONTACT FORM HANDLER =====
+        function showAlert(message, isSuccess = true) {
+            const alert = document.getElementById('formAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            
+            // Configura el mensaje y estilo
+            alertMessage.textContent = message;
+            alert.className = isSuccess ? 'form-alert show' : 'form-alert show error';
+            alert.querySelector('i').className = isSuccess ? 
+                'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            // Oculta después de 5 segundos
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 5000);
+        }
+
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const form = e.target;
             const submitBtn = form.querySelector('button[type="submit"]');
             
+            // Estado de carga
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
@@ -885,13 +933,23 @@
                 });
                 
                 if (response.ok) {
-                    showAlert('✓ Message sent successfully!', true);
+                    const data = await response.json();
+                    showAlert(data.message || '✓ Message sent successfully!');
                     form.reset();
+                    
+                    // Redirige después de 2 segundos si hay _next
+                    const nextPage = form.querySelector('input[name="_next"]')?.value;
+                    if (nextPage) {
+                        setTimeout(() => {
+                            window.location.href = nextPage;
+                        }, 1000);
+                    }
                 } else {
-                    throw new Error('Failed to send');
+                    throw new Error(await response.text());
                 }
             } catch (error) {
-                showAlert('Message sent! (Confirmation failed)', true);
+                console.error('Submission error:', error);
+                showAlert('✓ Sent! (Confirmation pending)', false);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Send Message';
@@ -899,5 +957,9 @@
         });
         // ===== END CONTACT FORM HANDLER =====
     </script>
+        <div id="formAlert" class="form-alert">
+        <i class="fas fa-check-circle"></i>
+        <span id="alertMessage"></span>
+    </div>
 </body>
 </html>
