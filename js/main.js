@@ -194,3 +194,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('send_email.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(r => r.json())
+    .then(res => {
+      if (res.success) {
+        window.location.href = 'thanks.html';
+      } else {
+        alert('Error: ' + (res.message || 'Failed to send message.'));
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Network error. Try again later.');
+    });
+  });
+});
