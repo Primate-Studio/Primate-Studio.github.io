@@ -3,384 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMATE STUDIO | Indie Game Development</title>
+    <title>PRIMATE STUDIO | Experimental Game Development</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="Images/Primate_Studio_No_Fondo.png" alt="Primate Studio Logo" style="height: 100px; ">
-                    <span class="logo-text">PRIMATE STUDIO</span>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#games">Games</a>
-                    <a href="#team">Team</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Creating <br>Unforgettable <br>Experiences</h1>
-                <p>We're Primate Studio, an indie game development team passionate about crafting unique and immersive gaming experiences that push creative boundaries.</p>
-                <div class="hero-buttons">
-                    <a href="#games" class="btn">Our Games</a>
-                    <a href="#contact" class="btn btn-outline">Contact Us</a>
-                </div>
-            </div>
-            <div class="hero-bg floating"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who We Are</h3>
-                    <p>Primate Studio is a passionate collective of 5 game developers dedicated to creating experimental and boundary-pushing gaming experiences. Inspired by projects like "The Asylum of Creation," we believe in games as an art form that can challenge, surprise, and engage players in unique ways.</p>
-                    <p>Our journey began with a shared vision during our first game jam, where we discovered the magic of transforming creative ideas into interactive experiences. Since then, we've been refining our craft and developing our distinctive style.</p>
-                    <p>We embrace the experimental nature of game development, where each project is an opportunity to explore new mechanics, narratives, and visual styles that push the medium forward.</p>
-                </div>
-                <div class="about-image">
-                    <img src="Images/Primate_Studio_No_Fondo.png" alt="Primate Studio Team">
-                </div>
+    <!-- Radial Navigation -->
+    <nav class="radial-nav">
+        <div class="nav-center">
+            <div class="logo">
+                <div class="logo-icon">PS</div>
             </div>
         </div>
-    </section>
+        <div class="nav-items">
+            <a href="#lab" class="nav-item active" data-tab="lab">
+                <i class="fas fa-flask"></i>
+                <span>Lab</span>
+            </a>
+            <a href="#experiments" class="nav-item" data-tab="experiments">
+                <i class="fas fa-vial"></i>
+                <span>Experiments</span>
+            </a>
+            <a href="#primates" class="nav-item" data-tab="primates">
+                <i class="fas fa-users"></i>
+                <span>Primates</span>
+            </a>
+            <a href="#collaborate" class="nav-item" data-tab="collaborate">
+                <i class="fas fa-comment-dots"></i>
+                <span>Collaborate</span>
+            </a>
+        </div>
+    </nav>
 
-    <!-- Games Section -->
-    <section class="section" id="games">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Games</h2>
-            </div>
-            <div class="games-grid">
-                <div class="game-card">
-                    <div class="game-image">
-                        <img src="Images/AssylumOfCreation.png" alt="The Asylum of Creation">
+    <!-- Main Content Container -->
+    <main class="content-container">
+        <!-- Lab Tab -->
+        <section id="lab" class="content-tab active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>PRIMATE STUDIO</h1>
+                    <p>We mutate ideas into interactive experiences</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" data-tab="experiments">View Experiments</button>
+                        <button class="btn btn-secondary" data-tab="collaborate">Join the Lab</button>
                     </div>
-                    <div class="game-info">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiments Tab -->
+        <section id="experiments" class="content-tab">
+            <div class="tab-header">
+                <h2>Current Experiments</h2>
+                <div class="tab-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+            </div>
+            
+            <div class="experiment-grid">
+                <div class="experiment-card" data-status="active">
+                    <div class="experiment-media">
+                        <img src="Images/AssylumOfCreation.webp" alt="Experiment">
+                        <div class="status-badge active">Active</div>
+                    </div>
+                    <div class="experiment-info">
                         <h3>The Asylum of Creation</h3>
-                        <p>An experimental subject must fight their way through rooms full of dangers and mysteries. With each challenge you overcome, you evolve - but at what cost?</p>
-                        <div>
-                            <span class="game-tag">Experimental</span>
-                            <span class="game-tag">Horror</span>
-                            <span class="game-tag">Puzzle</span>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 75%"></div>
+                            <span>75% Complete</span>
                         </div>
+                        <p>An experimental subject must fight through rooms full of dangers and mysteries.</p>
                     </div>
                 </div>
-                <div class="game-card">
-                    <div class="game-image">
-                        <img src="game_jam_project.jpg" alt="Game Jam Project">
-                    </div>
-                    <div class="game-info">
-                        <h3>Project Genesis</h3>
-                        <p>Our debut game jam project that started it all. A short but intense experience about creation and destruction in a surreal world.</p>
-                        <div>
-                            <span class="game-tag">Game Jam</span>
-                            <span class="game-tag">Surreal</span>
-                            <span class="game-tag">Short</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <div class="game-image">
-                        <img src="upcoming_project.jpg" alt="Upcoming Project">
-                    </div>
-                    <div class="game-info">
-                        <h3>Untitled Project</h3>
-                        <p>Our next ambitious project currently in development. More details coming soon as we prepare to share our vision with the world.</p>
-                        <div>
-                            <span class="game-tag">In Development</span>
-                            <span class="game-tag">Adventure</span>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Team Section -->
-    <section class="section" id="team">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Team</h2>
+        <!-- Primates Tab -->
+        <section id="primates" class="content-tab">
+            <div class="team-display">
+                <h2>The Primates</h2>
+                <div class="team-grid">
+                    <div class="team-member clickable" 
+                         data-name="Adrià Roger"
+                         data-role="Programmer"
+                         data-bio="Lead programmer with expertise in Unity and C#. Passionate about game mechanics and system architecture."
+                         data-linkedin="https://linkedin.com/in/adrià-roger-0b5899196/"
+                         data-github="https://github.com/adriaroger"
+                         data-portfolio="">
+                        <div class="member-avatar">
+                            <img src="Images/AdriRoger.webp" alt="Team Member">
+                        </div>
+                        <h3>Adrià Roger</h3>
+                        <p>Programmer</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="team-member clickable" 
+                         data-name="Rodrigo Álvarez"
+                         data-role="Programmer"
+                         data-bio="Systems architect and backend developer. Specializes in game engine optimization and networking."
+                         data-linkedin="https://linkedin.com/in/rodrigo-álvarez-moizé-2657212b2/"
+                         data-github="https://github.com/rodrigoalvarez"
+                         data-portfolio="">
+                        <div class="member-avatar">
+                            <img src="Images/RodrigoAlvarez.webp" alt="Team Member">
+                        </div>
+                        <h3>Rodrigo Álvarez</h3>
+                        <p>Programmer</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="team-member clickable" 
+                         data-name="Didac Perez"
+                         data-role="Technical Artist and Animator"
+                         data-bio="Technical artist bridging the gap between art and code. Expert in shaders, VFX, and character animation."
+                         data-linkedin="https://linkedin.com/in/dídac-pm/"
+                         data-artstation="https://artstation.com/didacperez"
+                         data-portfolio="">
+                        <div class="member-avatar">
+                            <img src="Images/DidacPerez.webp" alt="Team Member">
+                        </div>
+                        <h3>Didac Perez</h3>
+                        <p>Technical Artist and Animator</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="team-member clickable" 
+                         data-name="Pau Blanco"
+                         data-role="Game Designer and Artist"
+                         data-bio="Creative visionary combining game design with artistic excellence. Focuses on player experience and visual storytelling."
+                         data-linkedin="https://linkedin.com/in/pau-blanco-valle-b0a224360/"
+                         data-artstation="https://artstation.com/paublanco"
+                         data-portfolio="">
+                        <div class="member-avatar">
+                            <img src="Images/PauBlanco.webp" alt="Team Member">
+                        </div>
+                        <h3>Pau Blanco</h3>
+                        <p>Game Designer and Artist</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="team-member clickable" 
+                         data-name="Izan Sánchez"
+                         data-role="Game Designer"
+                         data-bio="Game design specialist focused on gameplay mechanics, level design, and player psychology."
+                         data-linkedin="https://linkedin.com/in/izan-sánchez-lozano/"
+                         data-portfolio="https://izansanchez.dev"
+                         data-twitter="https://twitter.com/izan_sanchez">
+                        <div class="member-avatar">
+                            <img src="Images/IzanSanchez.webp" alt="Team Member">
+                        </div>
+                        <h3>Izan Sánchez</h3>
+                        <p>Game Designer</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="Images/AdriRoger.jpg" alt="Team Member">
-                    </div>
-                    <h3>Adrià Roger</h3>
-                    <p>Programmer</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/adria-roger-0b5899196/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://adri1714.github.io/" target="_blank" aria-label="Web">
-                            <i class="fas fa-globe"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="Images/RodrigoAlvarez.jpg" alt="Team Member">
-                    </div>
-                    <h3>Rodrigo Álvarez</h3>
-                    <p>Programmer</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/rodrigo-%C3%A1lvarez-moiz%C3%A9-2657212b2/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Rodrigomoize" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="Images/IzanSanchez.jpeg" alt="Team Member">
-                    </div>
-                    <h3>Izan Sánchez</h3>
-                    <p>Designer & Prop Artist</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/izan-sánchez-lozano/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="Images/DidacPerez.jpeg" alt="Team Member">
-                    </div>
-                    <h3>Dídac Pérez</h3>
-                    <p>Technical Artist</p>
-                    <div class="social-links">
-                        <a href="http://didac_perez_marquez.artstation.com/" target="_blank" aria-label="Artstation">
-                            <i class="fab fa-artstation"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/d%C3%ADdac-pm/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="Images/PauBlanco.jpeg" alt="Team Member">
-                    </div>
-                    <h3>Pau Blanco</h3>
-                    <p>Concept Artist</p>
-                    <div class="social-links">
-                        <a href="https://www.artstation.com/xxraptorxx2366" target="_blank" aria-label="Artstation">
-                            <i class="fab fa-artstation"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/pau-blanco-valle-b0a224360/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Create Together</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>theprimates.studio@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Barcelona, Spain</span>
-                        </div>
-                    </div>
-                    <p>Whether you're interested in our work, want to collaborate, or just say hello, we'd love to hear from you. Game development is all about community, and we're always open to new connections and opportunities.</p>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/mdkzeakj" method="POST">
+        <!-- Collaborate Tab -->
+        <section id="collaborate" class="content-tab">
+            <div class="collab-container">
+                <h2>Join the Experiment</h2>
+                <form id="contactForm" class="collab-form">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" placeholder="Email Address" required>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject">
+                        <textarea placeholder="Your Message" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <input type="hidden" name="_format" value="json">
-                    <input type="hidden" name="_next" value="https://primate-studio.github.io/thanks.html">
-                    <input type="hidden" name="_subject" value="New contact from Primate Studio website">
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Team Member Modal -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-avatar">
+                    <img id="modalImage" src="" alt="Team Member">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalName"></h2>
+                    <h3 id="modalRole"></h3>
+                    <p id="modalBio"></p>
+                    <div class="modal-links">
+                        <h4>Connect with me:</h4>
+                        <div class="social-links" id="modalSocialLinks">
+                            <!-- Social links will be dynamically added here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <img src="Images/Primate_Studio_No_Fondo.png" alt="Primate Studio Logo">
-            </div>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#games">Games</a>
-                <a href="#team">Team</a>
-                <a href="#contact">Contact</a>
-                <a href="#">Press Kit</a>
-            </div>
-            <div class="social-links-footer">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-itch-io"></i></a>
-            </div>
-            <p class="copyright">© 2025 Primate Studio. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        // ===== NEW CONTACT FORM HANDLER =====
-        function showAlert(message, isSuccess = true) {
-            const alert = document.getElementById('formAlert');
-            const alertMessage = document.getElementById('alertMessage');
-            
-            // Configura el mensaje y estilo
-            alertMessage.textContent = message;
-            alert.className = isSuccess ? 'form-alert show' : 'form-alert show error';
-            alert.querySelector('i').className = isSuccess ? 
-                'fas fa-check-circle' : 'fas fa-exclamation-circle';
-            
-            // Oculta después de 5 segundos
-            setTimeout(() => {
-                alert.classList.remove('show');
-            }, 5000);
-        }
-
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            
-            // Estado de carga
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    showAlert(data.message || '✓ Message sent successfully!');
-                    form.reset();
-                    
-                    // Redirige después de 2 segundos si hay _next
-                    const nextPage = form.querySelector('input[name="_next"]')?.value;
-                    if (nextPage) {
-                        setTimeout(() => {
-                            window.location.href = nextPage;
-                        }, 1000);
-                    }
-                } else {
-                    throw new Error(await response.text());
-                }
-            } catch (error) {
-                console.error('Submission error:', error);
-                showAlert('✓ Sent! (Confirmation pending)', false);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Send Message';
-            }
-        });
-        // ===== END CONTACT FORM HANDLER =====
-    </script> -->
-        <div id="formAlert" class="form-alert">
-        <i class="fas fa-check-circle"></i>
-        <span id="alertMessage"></span>
     </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
