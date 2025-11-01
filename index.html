@@ -175,9 +175,12 @@
         <section id="collaborate" class="content-tab">
             <div class="collab-container">
                 <h2>Join the Experiment</h2>
-                <form id="contactForm" class="collab-form"
-                    action="https://formspree.io/f/mdkzeakj"
-                    method="POST">
+                <form
+                id="contactForm"
+                class="collab-form"
+                action="https://formspree.io/f/mdkzeakj"
+                method="POST">
+                
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required>
                 </div>
@@ -191,9 +194,8 @@
                     <textarea name="message" placeholder="Your Message" required></textarea>
                 </div>
 
-                <!-- 🔥 Esto hace que te lleve a thanks.htm al enviar -->
+                <!-- 👇 redirección al terminar -->
                 <input type="hidden" name="_next" value="https://primate-studio.github.io/thanks.htm">
-                <!-- (si estás en local, puedes poner: value="thanks.htm") -->
 
                 <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
