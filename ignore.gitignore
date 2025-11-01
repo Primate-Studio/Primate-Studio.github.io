@@ -1,0 +1,41 @@
+# === Archivos de entorno y configuración privada ===
+.env
+*.env
+*.env.local
+*.env.*.local
+
+# === Dependencias de Composer ===
+/vendor/
+
+# === Archivos del sistema ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Archivos temporales ===
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# === Cachés de PHP ===
+*.cache
+*.opcache
+*.phpunit.result.cache
+
+# === Archivos de IDEs ===
+.vscode/
+.idea/
+*.iml
+
+# === Archivos de despliegue ===
+/node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# === Copias locales o de testing ===
+test/
+tests/
+__pycache__/
