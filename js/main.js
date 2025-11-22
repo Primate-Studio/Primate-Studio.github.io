@@ -73,15 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form Submission
+    // Form Submission - Allow Formspree to handle it
     const contactForm = document.getElementById('contactForm');
     
     if(contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const inputs = this.querySelectorAll('input, textarea');
+            // Simple form validation before submission
+            const inputs = this.querySelectorAll('input[required], textarea[required]');
             let isValid = true;
             
             inputs.forEach(input => {
@@ -93,12 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            if(isValid) {
-                alert('Thank you for your message! We will contact you soon.');
-                this.reset();
-            } else {
+            if(!isValid) {
+                e.preventDefault(); // Only prevent if validation fails
                 alert('Please fill in all required fields.');
             }
+            // If valid, let the form submit naturally to Formspree
         });
     }
     
@@ -193,31 +190,4 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const contactForm = document.getElementById('contactForm');
-  if (!contactForm) return;
-
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-
-    fetch('send_email.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(r => r.json())
-    .then(res => {
-      if (res.success) {
-        window.location.href = 'thanks.html';
-      } else {
-        alert('Error: ' + (res.message || 'Failed to send message.'));
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Network error. Try again later.');
-    });
-  });
 });
