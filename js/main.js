@@ -92,10 +92,24 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             if(!isValid) {
-                e.preventDefault(); // Only prevent if validation fails
+                e.preventDefault();
                 alert('Please fill in all required fields.');
+                return;
             }
-            // If valid, let the form submit naturally to Formspree
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Reset button if form submission fails
+            setTimeout(() => {
+                if(submitBtn.disabled) {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            }, 5000);
         });
     }
     
